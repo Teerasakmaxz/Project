@@ -15,10 +15,22 @@ var firebaseAuth = firebase.auth
 
 var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
 var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
+
+var upToFirebaseRoom2Air2 = dbFirebase.ref("room2/air1")
+var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
+
 var state = dbFirebase.ref("room1/state");
 var state01 = dbFirebase.ref("room1/state01");
+
+var state02 = dbFirebase.ref("room2/state01");
+var state2 = dbFirebase.ref("room2/state");
+
 var button = dbFirebase.ref("room1/button");
 var button2 = dbFirebase.ref("room1/button2");
+
+var buttonR = dbFirebase.ref("room2/button");
+var buttonR2 = dbFirebase.ref("room2/button2");
+
 
 
 
@@ -52,6 +64,39 @@ button2.on('value', function(snapshot) {
         console.log(0);
         upToFirebaseRoom1Air2.set(0);
         state01.set(0);
+    }
+});
+
+
+var button2R2 = dbFirebase.ref('room2/button');
+button2R2.on('value', function(snapshot) {
+    var FBdataR2 = snapshot.val();
+
+    if (FBdataR2 == 3) {
+        addArr(2)
+        state2.set(1);
+
+
+    } else if (FBdataR2 == 0) {
+        console.log(0);
+        upToFirebaseRoom2Air1.set(0);
+        state2.set(0);
+    }
+});
+
+var button2R22 = dbFirebase.ref('room2/button2');
+button2R22.on('value', function(snapshot) {
+    var FBdataR22 = snapshot.val();
+
+    if (FBdataR22 == 4) {
+        addArr(2)
+        state02.set(1);
+
+
+    } else if (FBdataR22 == 0) {
+        console.log(0);
+        upToFirebaseRoom2Air2.set(0);
+        state02.set(0);
     }
 });
 
@@ -156,27 +201,52 @@ var numAIR1R2s = numAIR1R2.on('value', function(snapshot) {
 var numPerple1 = dbFirebase.ref("room1/UserinRoom");
 var numPerples1 = numPerple1.on("value", function(snapshot) {
     document.querySelector("#Light_Row_one > input").checked = snapshot.val();
+
     $('#Light_Row_one').click(function() {
-        numPerples1 = numPerple1.set('0', function() {
+        numPerples1 = numPerple1.set(0, function() {
 
         })
-    })
-});
+    });
 
+});
 
 var numPerple2 = dbFirebase.ref("room2/UserinRoom");
 var numPerples2 = numPerple2.on("value", function(snapshot) {
     document.querySelector("#Light_Row_one1 > input").checked = snapshot.val();
+
     $('#Light_Row_one1').click(function() {
-        numPerples2 = numPerple2.set('0', function() {
+        numPerples2 = numPerple2.set(0, function() {
+
 
         })
-    })
+    });
 
 });
-var dfFirebaseAir = dbFirebase.ref("room1/air");
-dfFirebaseAir.on('value', function(sanp) {
-    document.querySelectorAll("#AirOne1R1 > input").checked = sanp.val();
+
+var numAIR0R1 = dbFirebase.ref("room1/air");
+var numAIR0R1s = numAIR0R1.on("value", function(snapshot) {
+    document.querySelector("#AirOne1R1 >  input").checked = snapshot.val();
 
 });
-// dfFirebaseAir = document.getElementById("AirOne1R1").checked;
+var numAIR1R1 = dbFirebase.ref("room1/air1");
+var numAIR1R1s = numAIR1R1.on("value", function(snapshot) {
+    document.querySelector("#AirOne2R1 >  input").checked = snapshot.val();
+
+});
+
+
+var numAIR0R2 = dbFirebase.ref("room2/air");
+var numAIR0R2s = numAIR0R2.on("value", function(snapshot) {
+    document.querySelector("#AirOneR2 >  input").checked = snapshot.val();
+
+});
+
+
+
+
+
+var numAIR1R2 = dbFirebase.ref("room2/air1");
+var numAIR1R2s = numAIR1R2.on("value", function(snapshot) {
+    document.querySelector("#AirOne1R2 >  input").checked = snapshot.val();
+
+});

@@ -1,10 +1,21 @@
 function dataFromFB(para) {
     var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
     var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
+
+    var upToFirebaseRoom2Air2 = dbFirebase.ref("room2/air1")
+    var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
+
     var state = dbFirebase.ref("room1/state");
+    var state2 = dbFirebase.ref("room2/state");
+
     var state01 = dbFirebase.ref("room1/state01");
+    var state02 = dbFirebase.ref("room2/state01");
+
     var button = dbFirebase.ref("room1/button");
     var button2 = dbFirebase.ref("room1/button2");
+
+    var buttonR = dbFirebase.ref("room2/button");
+    var buttonR2 = dbFirebase.ref("room2/button2");
 
 
 
@@ -21,7 +32,7 @@ function dataFromFB(para) {
         state.set(0)
 
     } else if (para == 2 && name1() == 0) {
-        // data(1);
+
         button2.set(2);
         state01.set(1);
 
@@ -30,6 +41,27 @@ function dataFromFB(para) {
         upToFirebaseRoom1Air2.set(0)
         button2.set(0);
         state01.set(0)
+            //Room2
+    } else if (para == 3 && name11() == 0) {
+
+        buttonR.set(1);
+        state2.set(1);
+
+
+    } else if (para == 3 && name11() == 3) {
+        upToFirebaseRoom2Air2.set(0)
+        buttonR.set(0);
+        state2.set(0)
+    } else if (para == 4 && name111() == 0) {
+
+        buttonR.set(2);
+        state02.set(1);
+
+
+    } else if (para == 4 && name111() == 4) {
+        upToFirebaseRoom2Air2.set(0)
+        buttonR.set(0);
+        state02.set(0)
     }
 }
 
@@ -54,4 +86,23 @@ function name1() {
         gg1 = snapshot.val();
     });
     return gg1
+}
+
+
+function name11() {
+    var gg11;
+    var btn = dbFirebase.ref("room2/air");
+    btn.on('value', function(snapshot) {
+        gg11 = snapshot.val();
+    });
+    return gg11
+}
+
+function name111() {
+    var gg111;
+    var btn = dbFirebase.ref("room2/air1");
+    btn.on('value', function(snapshot) {
+        gg111 = snapshot.val();
+    });
+    return gg111
 }
