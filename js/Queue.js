@@ -7,7 +7,6 @@ function addArr(num) {
         queu.push(num)
     }
     if (queu.length <= 1) {
-
         outQueue()
     }
     console.log(queu)
@@ -26,10 +25,8 @@ function outQueue() {
         var dataOutQueue = queu.shift()
         if (dataOutQueue == 1) {
             upToFirebaseRoom1Air1.set(dataOutQueue)
-
         } else if (dataOutQueue == 2) {
             upToFirebaseRoom1Air2.set(dataOutQueue)
-
         } else if (dataOutQueue == 3) {
             upToFirebaseRoom2Air1.set(dataOutQueue)
         } else if (dataOutQueue == 4) {

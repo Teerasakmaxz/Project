@@ -73,7 +73,7 @@ button2R2.on('value', function(snapshot) {
     var FBdataR2 = snapshot.val();
 
     if (FBdataR2 == 3) {
-        addArr(2)
+        addArr(3)
         state2.set(1);
 
 
@@ -89,7 +89,7 @@ button2R22.on('value', function(snapshot) {
     var FBdataR22 = snapshot.val();
 
     if (FBdataR22 == 4) {
-        addArr(2)
+        addArr(4)
         state02.set(1);
 
 
@@ -100,7 +100,6 @@ button2R22.on('value', function(snapshot) {
     }
 });
 
-
 var numLEDR1 = dbFirebase.ref('room1/UserinRoom');
 var numLEDR1s = numLEDR1.on('value', function(snapshot) {
 
@@ -109,10 +108,10 @@ var numLEDR1s = numLEDR1.on('value', function(snapshot) {
     var LED;
     if (snapLEDR1 == num) {
         $("#btn-LED-R1").addClass('btn-off');
-
+        $("#btn-LED-R1").removeClass('btn-on');
     } else {
         $("#btn-LED-R1").addClass('btn-on');
-
+        $("#btn-LED-R1").removeClass('btn-off');
     }
     console.log('R1S101_LED:' + snapLEDR1)
     $('#userinRoomS101').text(snapLEDR1);
@@ -123,11 +122,11 @@ var numAIR0R1s = numAIR0R1.on('value', function(snapshot) {
 
     if (snapAIR0R1 == 0) {
         $("#btn-AIR1-R1").addClass('btn-off');
-        $("#btn-AIR1-R1").addClass('btn-off');
+        $("#btn-AIR1-R1").removeClass('btn-on');
 
     } else if (snapAIR0R1 == 1) {
         $("#btn-AIR1-R1").addClass('btn-on');
-        $("#btn-AIR1-R1").addClass('btn-on');
+        $("#btn-AIR1-R1").removeClass('btn-off');
 
     }
     console.log('R1S101_AIR1:' + snapAIR0R1)
@@ -139,11 +138,11 @@ var numAIR1R1s = numAIR1R1.on('value', function(snapshot) {
 
     if (snapAIR1R1 == 0) {
         $("#btn-AIR2-R1").addClass('btn-off');
-        $("#btn-AIR2-R1").addClass('btn-off');
+        $("#btn-AIR2-R1").removeClass('btn-on');
 
     } else if (snapAIR1R1 == 2) {
         $("#btn-AIR2-R1").addClass('btn-on');
-        $("#btn-AIR2-R1").addClass('btn-off');
+        $("#btn-AIR2-R1").removeClass('btn-off')
 
     }
     console.log('R1S101_AIR2:' + snapAIR1R1)
@@ -157,10 +156,10 @@ var numLEDR2s = numLEDR2.on('value', function(snapshot) {
     var LED;
     if (snapLEDR2 == num) {
         $("#btn-LED-R2").addClass('btn-off');
-
+        $("#btn-LED-R2").removeClass('btn-on');
     } else {
         $("#btn-LED-R2").addClass('btn-on');
-
+        $("#btn-LED-R2").removeClass('btn-off');
     }
     console.log('R2S102_LED:' + snapLEDR2)
     $('#userinRoomS102').text(snapLEDR2);
@@ -172,11 +171,11 @@ var numAIR0R2s = numAIR0R2.on('value', function(snapshot) {
     var AIR;
     if (snapAIR0R2 == num) {
         $("#btn-AIR1-R2").addClass('btn-off');
-        $('#btn-AIR1-R2').addClass('btn-off');
+        $('#btn-AIR1-R2').removeClass('btn-on');
 
     } else {
         $("#btn-AIR1-R2").addClass('btn-on');
-        $('#btn-AIR1-R2').addClass('btn-on');
+        $('#btn-AIR1-R2').removeClass('btn-off');
     }
     console.log('R1S102_AIR1:' + snapAIR0R2)
 });
@@ -188,11 +187,11 @@ var numAIR1R2s = numAIR1R2.on('value', function(snapshot) {
     var AIR;
     if (snapAIR1R2 == num) {
         $("#btn-AIR2-R2").addClass('btn-off');
-        $('#btn-AIR2-R2').addClass('btn-off');
+        $('#btn-AIR2-R2').removeClass('btn-on');
 
     } else {
         $("#btn-AIR2-R2").addClass('btn-on');
-        $('#btn-AIR2-R2').addClass('btn-on');
+        $('#btn-AIR2-R2').removeClass('btn-off');
     }
     console.log('R1S102_AiR2:' + snapAIR1R2)
 });
@@ -202,24 +201,12 @@ var numPerple1 = dbFirebase.ref("room1/UserinRoom");
 var numPerples1 = numPerple1.on("value", function(snapshot) {
     document.querySelector("#Light_Row_one > input").checked = snapshot.val();
 
-    $('#Light_Row_one').click(function() {
-        numPerples1 = numPerple1.set(0, function() {
-
-        })
-    });
-
 });
 
 var numPerple2 = dbFirebase.ref("room2/UserinRoom");
 var numPerples2 = numPerple2.on("value", function(snapshot) {
     document.querySelector("#Light_Row_one1 > input").checked = snapshot.val();
 
-    $('#Light_Row_one1').click(function() {
-        numPerples2 = numPerple2.set(0, function() {
-
-
-        })
-    });
 
 });
 
@@ -237,16 +224,11 @@ var numAIR1R1s = numAIR1R1.on("value", function(snapshot) {
 
 var numAIR0R2 = dbFirebase.ref("room2/air");
 var numAIR0R2s = numAIR0R2.on("value", function(snapshot) {
-    document.querySelector("#AirOneR2 >  input").checked = snapshot.val();
+    document.querySelector("#Airone >  input").checked = snapshot.val();
 
 });
 
-
-
-
-
 var numAIR1R2 = dbFirebase.ref("room2/air1");
 var numAIR1R2s = numAIR1R2.on("value", function(snapshot) {
-    document.querySelector("#AirOne1R2 >  input").checked = snapshot.val();
-
+    document.querySelector("#Airone1 >  input").checked = snapshot.val();
 });
